@@ -14,10 +14,10 @@ public class player : MonoBehaviour
     void Update()
     {
         Debug.Log("adios causa");
-        
+
         if (Keyboard.current.wKey.IsPressed())
         {
-        transform.position += Vector3.forward*speed*Time.deltaTime;
+            transform.position += Vector3.forward * speed * Time.deltaTime;
 
         }
         if (Keyboard.current.sKey.IsPressed())
