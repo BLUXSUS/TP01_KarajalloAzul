@@ -3,37 +3,61 @@ using UnityEngine.InputSystem;
 
 public class player : MonoBehaviour
 {
+    bool canjump = false;
+    public Rigidbody rigidbody;
     public float speed = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Hola tilin");
+       
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            canjump = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            canjump = false;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            canjump = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("adios causa");
+        
 
         if (Keyboard.current.wKey.IsPressed())
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            rigidbody.AddForce(Vector3.forward * Time.fixedDeltaTime * speed, ForceMode.Impulse);
 
         }
         if (Keyboard.current.sKey.IsPressed())
         {
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            rigidbody.AddForce(Vector3.back * Time.fixedDeltaTime * speed, ForceMode.Impulse);
 
         }
         if (Keyboard.current.aKey.IsPressed())
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            rigidbody.AddForce(Vector3.left * Time.fixedDeltaTime * speed, ForceMode.Impulse);
 
         }
         if (Keyboard.current.dKey.IsPressed())
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            rigidbody.AddForce(Vector3.right * Time.fixedDeltaTime * speed, ForceMode.Impulse);
 
         }
+        
     }
 }
