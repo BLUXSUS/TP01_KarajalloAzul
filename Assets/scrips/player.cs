@@ -15,21 +15,21 @@ public class player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.tag == "ground")
         {
             Canjump = true;
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.tag == "ground")
         {
             Canjump = false;
         }
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.tag == "ground")
         {
             Canjump = true;
         }
@@ -61,7 +61,7 @@ public class player : MonoBehaviour
         }
         if (Keyboard.current.spaceKey.IsPressed()&& Canjump)
         {
-            rigidbody.AddForce(Vector3.up * jump * Time.fixedDeltaTime, ForceMode.Force);
+            rigidbody.AddForce(Vector3.up * jump, ForceMode.Impulse);
         }
     }
 }
