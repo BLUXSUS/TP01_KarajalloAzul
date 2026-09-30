@@ -42,6 +42,7 @@ public class player : MonoBehaviour
 
         if (Keyboard.current.wKey.IsPressed())
         {
+
             rigidbody.AddForce(Vector3.forward * Time.fixedDeltaTime * speed, ForceMode.Force);
 
         }
