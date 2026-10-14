@@ -7,7 +7,7 @@ public class player : MonoBehaviour
     public Rigidbody rigidbody;
     public float speed = 10f;
     public float jump = 11;
- 
+    private Vector3 puntoRespawn = new Vector3(-15,35,-15);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +38,12 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (transform.position.y < 17)
+        {
+            transform.position = puntoRespawn;
+            rigidbody.linearVelocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+        }
 
         if (Keyboard.current.wKey.IsPressed())
         {
